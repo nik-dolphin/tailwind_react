@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/alt-text */
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import "./App.css";
 import Navbar from "./navbar";
 
@@ -19,13 +19,24 @@ function App() {
     },
     [checked]
   );
+  useEffect(() => {
+    const selectedData = checkList.filter((items) => items === "Apple");
+    setChecked(selectedData);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   console.log(checked);
   return (
     <>
       <Navbar />
       {checkList.map((item, index) => (
         <div key={index}>
-          <input value={item} checked={item === checked[0] ? true : false } type="checkbox" onChange={handleCheck} />
+          <input
+            value={item}
+            checked={item === checked[0] ? true : false}
+            type="checkbox"
+            onChange={handleCheck}
+          />
           <span>{item}</span>
         </div>
       ))}
@@ -103,7 +114,7 @@ function App() {
         </span>
         all the time, people think that you're busy.
       </blockquote>
-      <button className="py-8 px-8 m-6 sm:w-full sm:max-w-xs sm:mx-auto outline-none rounded-xl shadow-lg space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6 transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300">
+      <button className="py-8 px-8 m-6 sm:max-w-xs sm:mx-auto outline-none rounded-xl shadow-lg space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6 transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300">
         Save Changes
       </button>
       {/* <table className="border-collapse border border-slate-400 w-6/12 ml-80 text-center my-4">
