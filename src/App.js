@@ -39,7 +39,7 @@ function App() {
           <span>{item}</span>
         </div>
       ))}
-      <button className="bg-sky-700 px-4 py-2 text-white hover:bg-sky-800 sm:px-8 sm:py-3 animate-bounce m-6 sm:flex sm:mx-auto rounded-md">
+      <button className="bg-sky-700 space-x-8 max-w-sm md:mx-auto px-4 py-2 text-white hover:bg-sky-800 sm:px-8 sm:py-3 animate-bounce m-6 ml-[40%] sm:flex sm:mx-auto rounded-md flex items-center justify-center">
         button
       </button>
       <div className="p-6 max-w-sm md:mx-auto bg-white rounded-xl shadow-lg flex items-center justify-center space-x-8 m-6">
@@ -100,10 +100,11 @@ function App() {
           Create a new project from a variety of starting templates.
         </p>
         <label>
-          <input type="checkbox" class="accent-pink-500" checked /> Customized
+          <input type="checkbox" className="accent-pink-500" checked />{" "}
+          Customized
         </label>
         <br />
-        <select class="appearance-none p-2 w-20 text-center outline-none rounded-sm">
+        <select className="appearance-none p-2 w-20 text-center outline-none rounded-sm">
           <option>Yes</option>
           <option>No</option>
           <option>Maybe</option>
@@ -122,12 +123,12 @@ function App() {
         </span>
         all the time, people think that you're busy.
       </blockquote>
-      <button className="py-8 px-8 m-6 sm:max-w-xs sm:mx-auto outline-none rounded-xl shadow-lg space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6 transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300">
+      <button className="py-8 px-8 m-6 sm:mx-auto ml-[25%] outline-none rounded-xl shadow-lg space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6 transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300">
         Save Changes
       </button>
       <button
         type="button"
-        class="bg-indigo-500 px-4 py-2 text-white sm:px-8 sm:py-3 m-6 sm:flex sm:mx-auto rounded-md"
+        className="bg-indigo-500 px-4 py-2 text-white sm:px-8 sm:py-3 m-6 sm:mx-auto ml-[30%] sm:flex rounded-md"
         disabled
       >
         <svg
@@ -136,7 +137,7 @@ function App() {
         ></svg>
         Processing...
       </button>
-      {/* <table className="border-collapse border border-slate-400 w-6/12 ml-80 text-center my-4">
+      <table className="border-collapse border border-slate-400 sm:mx-auto ml-[30%] text-center my-4">
         <thead>
           <tr>
             <th className="border border-slate-300 ...">State</th>
@@ -157,7 +158,7 @@ function App() {
             <td className="border border-slate-300 ...">Detroit</td>
           </tr>
         </tbody>
-      </table> */}
+      </table>
       <div className="lg:columns-3 md:columns-2 columns-1">
         <img
           className="w-full rounded-3xl p-3 gap-lg border-1 overflow-hidden aspect-video brightness-50 contrast-50 hover:scale-105 duration-500 "
@@ -176,7 +177,7 @@ function App() {
           src="https://images.unsplash.com/photo-1665516533754-d98825ae07e6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=760&q=80"
         />
         <img
-          className="w-full rounded-3xl p-3 gap-lg border-1 duration-500 aspect-square hover:scale-105 hover:origin-top-right"
+          className="w-full rounded-3xl p-3 gap-lg border-1 duration-500 aspect-square hover:scale-50 hover:origin-center"
           src="https://images.unsplash.com/photo-1665548460518-f92c43544ce3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=715&q=80"
         />
         <img
