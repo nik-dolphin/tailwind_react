@@ -25,7 +25,6 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log(checked);
   return (
     <>
       <Navbar />
@@ -100,6 +99,15 @@ function App() {
         <p className="text-slate-500 group-hover:text-white text-sm">
           Create a new project from a variety of starting templates.
         </p>
+        <label>
+          <input type="checkbox" class="accent-pink-500" checked /> Customized
+        </label>
+        <br />
+        <select class="appearance-none p-2 w-20 text-center outline-none rounded-sm">
+          <option>Yes</option>
+          <option>No</option>
+          <option>Maybe</option>
+        </select>
       </a>
       <div className="md:columns-2 columns-1 m-6 bg-[#7FB4D3]  text-teal-900 rounded-md p-5 text-center">
         <p>Well, let me tell you something, ...</p>
@@ -116,6 +124,17 @@ function App() {
       </blockquote>
       <button className="py-8 px-8 m-6 sm:max-w-xs sm:mx-auto outline-none rounded-xl shadow-lg space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6 transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300">
         Save Changes
+      </button>
+      <button
+        type="button"
+        class="bg-indigo-500 px-4 py-2 text-white sm:px-8 sm:py-3 m-6 sm:flex sm:mx-auto rounded-md"
+        disabled
+      >
+        <svg
+          className="animate-spin h-5 w-5 mr-3 color-whtie"
+          viewBox="0 0 24 24"
+        ></svg>
+        Processing...
       </button>
       {/* <table className="border-collapse border border-slate-400 w-6/12 ml-80 text-center my-4">
         <thead>
