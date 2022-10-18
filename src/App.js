@@ -28,17 +28,21 @@ function App() {
   return (
     <>
       <Navbar />
-      {checkList.map((item, index) => (
-        <div key={index}>
-          <input
-            value={item}
-            checked={item === checked[0] ? true : false}
-            type="checkbox"
-            onChange={handleCheck}
-          />
-          <span>{item}</span>
-        </div>
-      ))}
+      <div class="flex items-left justify-center p-2 m-2 pl-[35%] md:pl-0 flex-col md:flex-row">
+        {checkList.map((item, index) => (
+          <div key={index} className="p-2">
+            <input
+              value={item}
+              checked={item === checked[0] ? true : false}
+              type="checkbox"
+              onChange={handleCheck}
+              id={item}
+              className="m-1"
+            />
+            <label for={item}>{item}</label>
+          </div>
+        ))}
+      </div>
       <div class="flex items-center justify-center">
         <button className="bg-sky-700 space-x-8 max-w-sm px-8 py-3 text-white hover:bg-sky-800 animate-bounce m-6 rounded-md">
           button
