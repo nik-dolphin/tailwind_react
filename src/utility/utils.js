@@ -52,4 +52,34 @@ export const ProjectsList = [
     url: "https://github.com/nik-dolphin/Blog-nextjs-project",
     description: `Create app for blogging using reactjs and NextJs.`,
   },
+  {
+    title: "Next Project",
+    url: "https://github.com/nik-dolphin/next-project",
+    description: `Create app using reactjs and NextJs`,
+  },
+  {
+    title: "Product API Project",
+    url: "https://github.com/nik-dolphin/product-api-project",
+    description: `Create app for product api integration using reactjs`,
+  },
+  {
+    title: "First Dev Project",
+    url: "https://github.com/nik-dolphin/Html-css-js-demo-project",
+    description: `Create app using HTML, CSS and JavaScript`,
+  },
+  {
+    title: "Redux Saga Project",
+    url: "https://github.com/nik-dolphin/redux-saga-project",
+    description: `Create app using redux-saga state management in reactjs.`,
+  },
+  {
+    title: "Semantic UI Project",
+    url: "https://github.com/nik-dolphin/semantic-ui-project",
+    description: `Create app using reactjs and semantic custom UI.`,
+  },
+  {
+    title: "Chakra Project",
+    url: "https://github.com/nik-dolphin/Chakra-demo-project",
+    description: `Create app using reactjs and chakra custom UI.`,
+  },
 ];
