@@ -96,7 +96,7 @@ const Dashboard = () => {
       <div class="flex items-center justify-center">
         {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
         <a
-          href=""
+          href="#"
           className="group mt-4 block m-6 rounded-lg p-6 bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3 hover:bg-sky-500 hover:ring-sky-500"
         >
           <div className="flex items-center space-x-3">
