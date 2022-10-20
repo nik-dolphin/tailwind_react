@@ -16,14 +16,16 @@ const Dashboard = () => {
     },
     [checked]
   );
+  
   useEffect(() => {
     const selectedData = checkList.filter((items) => items === "Apple");
     setChecked(selectedData);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   return (
     <>
-      <div class="flex items-left justify-center p-2 m-2 pl-[35%] md:pl-0 flex-col md:flex-row">
+      <div className="flex items-left justify-center p-2 m-2 pl-[35%] md:pl-0 flex-col md:flex-row">
         {checkList.map((item, index) => (
           <div key={index} className="p-2">
             <input
@@ -34,16 +36,16 @@ const Dashboard = () => {
               id={item}
               className="m-1"
             />
-            <label for={item}>{item}</label>
+            <label htmlFor={item}>{item}</label>
           </div>
         ))}
       </div>
-      <div class="flex items-center justify-center">
+      <div className="flex items-center justify-center">
         <button className="bg-sky-700 w-97 space-x-8 px-8 py-3 text-white hover:bg-sky-800 animate-bounce m-6 rounded-md">
           button
         </button>
       </div>
-      <div class="flex items-center justify-center">
+      <div className="flex items-center justify-center">
         <div className="p-6 max-w-sm bg-white rounded-xl shadow-lg flex items-center justify-center space-x-8 m-6 w-96">
           <div className="shrink-0">
             <img
@@ -58,7 +60,7 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-      <div class="flex items-center justify-center">
+      <div className="flex items-center justify-center">
         <div className="border border-blue-300 shadow rounded-md p-4 max-w-sm m-6 w-96">
           <div className="animate-pulse flex space-x-4">
             <div className="rounded-full bg-slate-200 h-10 w-10"></div>
@@ -75,7 +77,7 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-      <div class="flex items-center justify-center">
+      <div className="flex items-center justify-center">
         <div className="py-8 px-8 max-w-sm m-6 w-96 bg-white rounded-xl shadow-lg space-y-2 sm:flex sm:items-center sm:space-y-0 sm:space-x-6">
           <img
             className="block mx-auto h-24 rounded-full sm:mx-0 sm:shrink-0 border-2 border-slate-900 hover:scale-125 hover:rotate-[360deg] duration-150"
@@ -93,7 +95,7 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-      <div class="flex items-center justify-center">
+      <div className="flex items-center justify-center">
         {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
         <a
           href="#"
@@ -139,12 +141,12 @@ const Dashboard = () => {
         </span>
         all the time, people think that you're busy.
       </blockquote>
-      <div class="flex items-center justify-center">
+      <div className="flex items-center justify-center">
         <button className="py-3 px-4 m-6 outline-none rounded-xl shadow-lg space-y-2 sm:flex sm:items-center sm:space-y-0 sm:space-x-6 transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300">
           Save Changes
         </button>
       </div>
-      <div class="flex items-center justify-center">
+      <div className="flex items-center justify-center">
         <button
           type="button"
           className="bg-indigo-500 px-4 py-2 text-white sm:px-8 sm:py-3 m-6 flex rounded-md"
@@ -157,15 +159,15 @@ const Dashboard = () => {
             fill="none"
           >
             <circle
-              class="opacity-25"
+              className="opacity-25"
               cx="12"
               cy="12"
               r="10"
               stroke="currentColor"
-              stroke-width="4"
+              strokeWidth="4"
             ></circle>
             <path
-              class="opacity-75"
+              className="opacity-75"
               fill="currentColor"
               d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
             ></path>
@@ -173,24 +175,24 @@ const Dashboard = () => {
           Processing...
         </button>
       </div>
-      <div class="relative rounded-xl overflow-auto p-8">
-        <div class="flex items-center justify-center">
-          <span class="relative inline-flex">
+      <div className="relative rounded-xl overflow-auto p-8">
+        <div className="flex items-center justify-center">
+          <span className="relative inline-flex">
             <button
               type="button"
-              class="inline-flex cursor-not-allowed items-center px-4 py-2 font-semibold leading-6 text-sm shadow rounded-md text-sky-500 bg-white dark:bg-slate-800 transition ease-in-out duration-150 ring-1 ring-slate-900/10 dark:ring-slate-200/20"
+              className="inline-flex cursor-not-allowed items-center px-4 py-2 font-semibold leading-6 text-sm shadow rounded-md text-sky-500 bg-white dark:bg-slate-800 transition ease-in-out duration-150 ring-1 ring-slate-900/10 dark:ring-slate-200/20"
               disabled=""
             >
               Transactions
             </button>
-            <span class="flex absolute h-3 w-3 top-0 right-0 -mt-1 -mr-1">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-3 w-3 bg-sky-500"></span>
+            <span className="flex absolute h-3 w-3 top-0 right-0 -mt-1 -mr-1">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-sky-500"></span>
             </span>
           </span>
         </div>
       </div>
-      <div class="flex items-center justify-center">
+      <div className="flex items-center justify-center">
         <table className="border-collapse border border-slate-400 text-center m-3">
           <thead>
             <tr>
