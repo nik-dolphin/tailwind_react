@@ -1,9 +1,10 @@
 import React, { Fragment, useState } from "react";
-import { Popover, Transition } from "@headlessui/react";
+import { Popover, Switch, Transition } from "@headlessui/react";
 import { Link } from "react-router-dom";
 const Navbar = () => {
   const [toggleNavLink, setToggleNavLink] = useState(false);
   const [toggleProfile, setToggleProfile] = useState(false);
+  const [enabled, setEnabled] = useState(false);
   return (
     <nav className="bg-gray-800">
       <div className="mx-auto max-w-7xl px-2 sm:px-16 lg:px-18">
@@ -93,6 +94,21 @@ const Navbar = () => {
             </div>
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+            <div className="py-16">
+              <Switch
+                checked={enabled}
+                onChange={setEnabled}
+                className={`${enabled ? "bg-teal-900" : "bg-teal-700"}
+          relative inline-flex h-[19px] w-[40px] shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
+              >
+                <span className="sr-only">Use setting</span>
+                <span
+                  aria-hidden="true"
+                  className={`${enabled ? "translate-x-[20px]" : "translate-x-0"}
+            pointer-events-none inline-block h-[15px] w-[15px] transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
+                />
+              </Switch>
+            </div>
             <button
               type="button"
               className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
