@@ -57,13 +57,13 @@ const Dashboard = () => {
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          stroke-width="1.5"
+          strokeWidth="1.5"
           stroke="currentColor"
           className="w-6 h-6"
         >
           <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             d="M12 19.5v-15m0 0l-6.75 6.75M12 4.5l6.75 6.75"
           />
         </svg>
@@ -152,11 +152,6 @@ const Dashboard = () => {
           className="group mt-4 block m-6 rounded-lg p-6 bg-white ring-1 ring-slate-900/5 shadow-lg space-y-3 hover:bg-sky-500 hover:ring-sky-500"
         >
           <div className="flex items-center space-x-3">
-            <svg
-              className="h-6 w-6 stroke-sky-500 group-hover:stroke-white"
-              fill="none"
-              viewBox="0 0 24 24"
-            ></svg>
             <h3 className="text-slate-900 group-hover:text-white text-sm font-semibold">
               New project
             </h3>
@@ -164,12 +159,12 @@ const Dashboard = () => {
           <p className="text-slate-500 group-hover:text-white text-sm">
             Create a new project from a variety of starting templates.
           </p>
-          <label>
-            <input type="checkbox" className="accent-pink-500" />
+          <label className="text-black">
+            <input type="checkbox" className="accent-pink-500 mr-2" />
             Customized
           </label>
           <br />
-          <select className="appearance-none p-2 w-20 text-center outline-none rounded-sm">
+          <select className="appearance-none p-2 w-20 text-center outline-none rounded-sm text-black">
             <option>Yes</option>
             <option>No</option>
             <option>Maybe</option>

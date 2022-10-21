@@ -1,4 +1,5 @@
 import React from "react";
+import { useModeStore } from "../store/mode/store";
 import { ProjectsList } from "../utility/utils";
 
 const ProjectComponent = ({ items }) => {
@@ -18,8 +19,13 @@ const ProjectComponent = ({ items }) => {
 };
 
 const Projects = () => {
+  const toggleMode = useModeStore((state) => state.toggleMode);
   return (
-    <>
+    <div
+      className={`${
+        !toggleMode ? "bg-white" : "bg-black text-white"
+      } xl:h-[93.5vh]`}
+    >
       <h1 className="text-center pt-14 text-3xl">All Projects</h1>
       <div className="flex items-center justify-center">
         <div className="grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 w-90% md:w-4/5">
@@ -32,7 +38,7 @@ const Projects = () => {
           })}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
