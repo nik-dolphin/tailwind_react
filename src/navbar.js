@@ -1,10 +1,11 @@
 import React, { Fragment, useState } from "react";
 import { Popover, Switch, Transition } from "@headlessui/react";
 import { Link } from "react-router-dom";
+import { useModeStore } from "./store/mode/store";
 const Navbar = () => {
+  const { setToggleMode, toggleMode } = useModeStore((state) => state);
   const [toggleNavLink, setToggleNavLink] = useState(false);
   const [toggleProfile, setToggleProfile] = useState(false);
-  const [enabled, setEnabled] = useState(false);
   return (
     <nav className="bg-gray-800">
       <div className="mx-auto max-w-7xl px-2 sm:px-16 lg:px-18">
@@ -96,22 +97,22 @@ const Navbar = () => {
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             <div className="py-2 px-3 sm:flex items-center justify-start hidden">
               <Switch
-                checked={enabled}
-                onChange={setEnabled}
-                className={`${enabled ? " bg-black" : "bg-white"}
+                checked={toggleMode}
+                onChange={setToggleMode}
+                className={`${toggleMode ? " bg-black" : "bg-white"}
           relative inline-flex h-[19px] w-[40px] shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
               >
                 <span className="sr-only">Use setting</span>
                 <span
                   aria-hidden="true"
                   className={`${
-                    enabled
+                    toggleMode
                       ? "translate-x-[20px] bg-white"
                       : "translate-x-0 bg-amber-500"
                   }
             pointer-events-none inline-block h-[15px] w-[15px] transform rounded-full shadow-lg ring-0 transition duration-200 ease-in-out`}
                 >
-                  {enabled ? (
+                  {toggleMode ? (
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -145,7 +146,7 @@ const Navbar = () => {
                 </span>
               </Switch>
               <p className={`pl-2 text-white`}>
-                {!enabled ? "Light" : "Dark"} Mode
+                {!toggleMode ? "Light" : "Dark"} Mode
               </p>
             </div>
             <button
@@ -274,22 +275,22 @@ const Navbar = () => {
             </Link>
             <div className="py-2 px-3 flex items-center justify-start">
               <Switch
-                checked={enabled}
-                onChange={setEnabled}
-                className={`${enabled ? " bg-black" : "bg-white"}
+                checked={toggleMode}
+                onChange={setToggleMode}
+                className={`${toggleMode ? " bg-black" : "bg-white"}
           relative inline-flex h-[19px] w-[40px] shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
               >
                 <span className="sr-only">Use setting</span>
                 <span
                   aria-hidden="true"
                   className={`${
-                    enabled
+                    toggleMode
                       ? "translate-x-[20px] bg-white"
                       : "translate-x-0 bg-amber-500"
                   }
             pointer-events-none inline-block h-[15px] w-[15px] transform rounded-full shadow-lg ring-0 transition duration-200 ease-in-out`}
                 >
-                  {enabled ? (
+                  {toggleMode ? (
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -323,7 +324,7 @@ const Navbar = () => {
                 </span>
               </Switch>
               <p className={`pl-2 text-white`}>
-                {!enabled ? "Light" : "Dark"} Mode
+                {!toggleMode ? "Light" : "Dark"} Mode
               </p>
             </div>
           </div>

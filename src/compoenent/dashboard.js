@@ -1,7 +1,9 @@
 import { Transition } from "@headlessui/react";
 import React, { Fragment, useCallback, useEffect, useState } from "react";
+import { useModeStore } from "../store/mode/store";
 
 const Dashboard = () => {
+  const toggleMode = useModeStore((state) => state.toggleMode);
   const [checked, setChecked] = useState([]);
   const [isShowing, setIsShowing] = useState(false);
   const checkList = ["Apple", "Banana", "Tea", "Coffee"];
@@ -26,8 +28,8 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <>
-      <div className="flex items-left justify-center p-2 m-2 pl-[35%] md:pl-0 flex-col md:flex-row">
+    <div className={`${toggleMode ? " bg-black text-white" : "bg-white"}`}>
+      <div className="flex items-left justify-center p-2 mx-2 mb-2 pl-[35%] md:pl-0 flex-col md:flex-row">
         {checkList.map((item, index) => (
           <div key={index} className="p-2">
             <input
@@ -50,8 +52,31 @@ const Dashboard = () => {
           button
         </button>
       </div>
-      <div className="flex flex-col items-center py-6">
-        <div className="h-32 w-32">
+      <div className="flex items-center justify-center ">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          className="w-6 h-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M12 19.5v-15m0 0l-6.75 6.75M12 4.5l6.75 6.75"
+          />
+        </svg>
+      </div>
+      <div className="flex items-center justify-center">
+        Click On Button for animate box
+      </div>
+      <div className="flex flex-col items-center py-6 ">
+        <div
+          className={`h-32 w-32 border-2  rounded-md shadow-lg ${
+            toggleMode ? "border-white" : "border-black"
+          }`}
+        >
           <Transition
             as={Fragment}
             show={isShowing}
@@ -62,7 +87,11 @@ const Dashboard = () => {
             leaveFrom="opacity-100 rotate-0 scale-100 "
             leaveTo="opacity-0 scale-95 "
           >
-            <div className="h-full w-full rounded-md bg-black shadow-lg" />
+            <div
+              className={`h-full w-full rounded-md shadow-lg ${
+                toggleMode ? "bg-white" : "bg-black"
+              }`}
+            />
           </Transition>
         </div>
       </div>
@@ -147,13 +176,19 @@ const Dashboard = () => {
           </select>
         </a>
       </div>
-      <div className="md:columns-2 columns-1 m-6 bg-[#7FB4D3]  text-teal-900 rounded-md p-5 text-center">
+      <div
+        className={`md:columns-2 columns-1 m-6 bg-[#7FB4D3] rounded-md p-5 text-teal-900 text-center`}
+      >
         <p>Well, let me tell you something, ...</p>
         <p className="md:break-after-column">Sure, go ahead, laugh...</p>
         <p>Maybe we can live without...</p>
         <p>Look. If you think this is...</p>
       </div>
-      <blockquote className="text-xl font-semibold italic text-center text-slate-900 mt-10 p-2">
+      <blockquote
+        className={`text-xl font-semibold italic text-center  mt-10 p-2 ${
+          toggleMode ? "text-white" : "text-slate-900"
+        }`}
+      >
         When you look
         <span className="before:block before:absolute before:-inset-1 before:-skew-y-2 before:bg-pink-500 relative inline-block ml-2 mr-2">
           <span className="relative text-white after:content-['_↗']">
@@ -284,7 +319,7 @@ const Dashboard = () => {
           src="https://images.unsplash.com/photo-1665516533754-d98825ae07e6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=760&q=80"
         />
       </div>
-    </>
+    </div>
   );
 };
 
