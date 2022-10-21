@@ -1,7 +1,9 @@
-import React, { useCallback, useEffect, useState } from "react";
+import { Transition } from "@headlessui/react";
+import React, { Fragment, useCallback, useEffect, useState } from "react";
 
 const Dashboard = () => {
   const [checked, setChecked] = useState([]);
+  const [isShowing, setIsShowing] = useState(false);
   const checkList = ["Apple", "Banana", "Tea", "Coffee"];
 
   const handleCheck = useCallback(
@@ -16,7 +18,7 @@ const Dashboard = () => {
     },
     [checked]
   );
-  
+
   useEffect(() => {
     const selectedData = checkList.filter((items) => items === "Apple");
     setChecked(selectedData);
@@ -41,9 +43,28 @@ const Dashboard = () => {
         ))}
       </div>
       <div className="flex items-center justify-center">
-        <button className="bg-sky-700 w-97 space-x-8 px-8 py-3 text-white hover:bg-sky-800 animate-bounce m-6 rounded-md">
+        <button
+          className="bg-sky-700 w-97 space-x-8 px-8 py-3 text-white hover:bg-sky-800 animate-bounce m-6 rounded-md"
+          onClick={() => setIsShowing(!isShowing)}
+        >
           button
         </button>
+      </div>
+      <div className="flex flex-col items-center py-6">
+        <div className="h-32 w-32">
+          <Transition
+            as={Fragment}
+            show={isShowing}
+            enter="transform transition duration-[400ms]"
+            enterFrom="opacity-0 rotate-[-120deg] scale-50"
+            enterTo="opacity-100 rotate-0 scale-100"
+            leave="transform duration-200 transition ease-in-out"
+            leaveFrom="opacity-100 rotate-0 scale-100 "
+            leaveTo="opacity-0 scale-95 "
+          >
+            <div className="h-full w-full rounded-md bg-black shadow-lg" />
+          </Transition>
+        </div>
       </div>
       <div className="flex items-center justify-center">
         <div className="p-6 max-w-sm bg-white rounded-xl shadow-lg flex items-center justify-center space-x-8 m-6 w-96">
@@ -115,7 +136,7 @@ const Dashboard = () => {
             Create a new project from a variety of starting templates.
           </p>
           <label>
-            <input type="checkbox" className="accent-pink-500" checked />
+            <input type="checkbox" className="accent-pink-500" />
             Customized
           </label>
           <br />
