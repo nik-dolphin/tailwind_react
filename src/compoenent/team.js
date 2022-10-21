@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/anchor-has-content */
 import { Tab } from "@headlessui/react";
 import React, { useState } from "react";
 import { useModeStore } from "../store/mode/store";
@@ -8,10 +10,14 @@ const Team = () => {
   const toggleMode = useModeStore((state) => state.toggleMode);
   let [categories] = useState({ Recent, Popular, Trending });
   return (
-    <div className={`${toggleMode ? " bg-black" : "bg-white"} flex flex-center justify-center h-[93.5vh]`}>
+    <div
+      className={`${
+        toggleMode ? " bg-black" : "bg-white"
+      } flex flex-center justify-center h-[93.5vh]`}
+    >
       <div className="w-full max-w-md px-2 py-16 sm:px-0">
         <Tab.Group>
-          <Tab.List className="flex space-x-1 rounded-xl bg-blue-900/20 p-1">
+          <Tab.List className="flex space-x-1 rounded-xl bg-blue-900 p-1">
             {Object.keys(categories).map((category) => (
               <Tab
                 key={category}
@@ -47,7 +53,6 @@ const Team = () => {
                       <h3 className="text-sm font-medium leading-5">
                         {post.title}
                       </h3>
-
                       <ul className="mt-1 flex space-x-1 text-xs font-normal leading-4 text-gray-500">
                         <li>{post.date}</li>
                         <li>&middot;</li>
