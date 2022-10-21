@@ -31,7 +31,14 @@ const Team = () => {
                   )
                 }
               >
-                {category}
+                <div className="flex flex-col sm:flex-row items-center justify-start sm:pl-2">
+                  <img
+                    className="h-8 w-8 rounded-full bg-white"
+                    src="/profile.png"
+                    alt="profile"
+                  />
+                  <div className="pl-2">{category}</div>
+                </div>
               </Tab>
             ))}
           </Tab.List>

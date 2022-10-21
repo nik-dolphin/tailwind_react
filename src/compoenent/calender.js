@@ -27,7 +27,7 @@ const Calender = () => {
       group: 2,
       title: "item 2",
       start_time: moment().add(-0.5, "hour"),
-      end_time: moment().add(0.5, "hour"),
+      end_time: moment().add(5.5, "hour"),
     },
     {
       id: 3,
@@ -38,12 +38,16 @@ const Calender = () => {
     },
   ];
   return (
-    <div className={`${!toggleMode ? "bg-white text-black" : "bg-black "} h-[93.5vh]`}>
-      <div className="flex items-center justify-center p-20"> 
+    <div
+      className={`${
+        !toggleMode ? "bg-white text-black" : "bg-black "
+      } h-[93.5vh]`}
+    >
+      <div className="flex items-center justify-center pt-10">
         <Calendar
           onChange={onChange}
           value={value}
-          className="shadow-lg rounded"
+          className="shadow-lg rounded w-19"
         />
       </div>
       <Timeline
@@ -51,6 +55,7 @@ const Calender = () => {
         items={items}
         defaultTimeStart={moment().add(-12, "hour")}
         defaultTimeEnd={moment().add(12, "hour")}
+        className="m-2 rounded"
       />
     </div>
   );
