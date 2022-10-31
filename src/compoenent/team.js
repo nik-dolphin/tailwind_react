@@ -4,7 +4,7 @@ import { RadioGroup, Tab } from "@headlessui/react";
 import React, { useState } from "react";
 import { useModeStore } from "../store/mode/store";
 import { classNames } from "../utility/functions";
-import { Recent, Popular, Trending, plans } from "../utility/utils";
+import { Recent, Popular, Trending, plans, allTeam } from "../utility/utils";
 
 const CheckIcon = (props) => {
   return (
@@ -23,7 +23,7 @@ const CheckIcon = (props) => {
 
 const Team = () => {
   const toggleMode = useModeStore((state) => state.toggleMode);
-  let [categories] = useState({ Recent, Popular, Trending });
+  // let  = useState(allTeam);
   const [selected, setSelected] = useState(plans[0]);
   return (
     <div className={`${toggleMode ? " bg-black" : "bg-white"} h-[93.5vh]`}>
@@ -31,9 +31,9 @@ const Team = () => {
         <div className="w-full max-w-md px-2 py-16 sm:px-0">
           <Tab.Group>
             <Tab.List className="flex space-x-1 rounded-xl bg-blue-900 p-1">
-              {Object.keys(categories).map((category) => (
+              {allTeam.map((category, index) => (
                 <Tab
-                  key={category}
+                  key={index}
                   className={({ selected }) =>
                     classNames(
                       "w-full rounded-lg py-2.5 text-sm font-medium leading-5 text-blue-700",
@@ -50,13 +50,13 @@ const Team = () => {
                       src="/profile.png"
                       alt="profile"
                     />
-                    <div className="pl-2">{category}</div>
+                    <div className="pl-2">{category?.name}</div>
                   </div>
                 </Tab>
               ))}
             </Tab.List>
             <Tab.Panels className="mt-2">
-              {Object.values(categories).map((posts, idx) => (
+              {allTeam.map((posts, idx) => (
                 <Tab.Panel
                   key={idx}
                   className={classNames(
@@ -65,7 +65,7 @@ const Team = () => {
                   )}
                 >
                   <ul>
-                    {posts.map((post) => (
+                    {posts?.details?.map((post) => (
                       <li
                         key={post.id}
                         className="relative rounded-md p-3 hover:bg-gray-100"
