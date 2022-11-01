@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Popover, Switch, Transition } from "@headlessui/react";
 import { Link } from "react-router-dom";
 import { useModeStore } from "./store/mode/store";
@@ -12,6 +12,41 @@ const Navbar = () => {
     projects: false,
     calender: false,
   });
+  const [pathName, setPathName] = useState("");
+  useEffect(() => {
+    const url = window.location.pathname;
+    console.log(pathName);
+    if (url === "/" || pathName === "/") {
+      setToggleNavDesign({
+        dash: true,
+        team: false,
+        projects: false,
+        calender: false,
+      });
+    } else if (url === "/team" || pathName === "/team") {
+      setToggleNavDesign({
+        dash: false,
+        team: true,
+        projects: false,
+        calender: false,
+      });
+    } else if (url === "/projects" || pathName === "/projects") {
+      setToggleNavDesign({
+        dash: false,
+        team: false,
+        projects: true,
+        calender: false,
+      });
+    } else if (url === "/calender" || pathName === "/calender") {
+      setToggleNavDesign({
+        dash: false,
+        team: false,
+        projects: false,
+        calender: true,
+      });
+    }
+  }, [pathName]);
+
   return (
     <nav className="bg-gray-800">
       <div className="mx-auto max-w-7xl px-2 sm:px-16 lg:px-18">
@@ -78,14 +113,7 @@ const Navbar = () => {
                     toggleNavDesign?.dash && "bg-gray-900"
                   } text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium`}
                   aria-current="page"
-                  onClick={() =>
-                    setToggleNavDesign({
-                      dash: true,
-                      team: false,
-                      projects: false,
-                      calender: false,
-                    })
-                  }
+                  onClick={() => setPathName("/")}
                 >
                   Dashboard
                 </Link>
@@ -94,14 +122,7 @@ const Navbar = () => {
                   className={`${
                     toggleNavDesign?.team && "bg-gray-900"
                   } text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium`}
-                  onClick={() =>
-                    setToggleNavDesign({
-                      dash: false,
-                      team: true,
-                      projects: false,
-                      calender: false,
-                    })
-                  }
+                  onClick={() => setPathName("/team")}
                 >
                   Team
                 </Link>
@@ -110,14 +131,7 @@ const Navbar = () => {
                   className={`${
                     toggleNavDesign?.projects && "bg-gray-900"
                   } text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium`}
-                  onClick={() =>
-                    setToggleNavDesign({
-                      dash: false,
-                      team: false,
-                      projects: true,
-                      calender: false,
-                    })
-                  }
+                  onClick={() => setPathName("/projects")}
                 >
                   Projects
                 </Link>
@@ -126,14 +140,7 @@ const Navbar = () => {
                   className={`${
                     toggleNavDesign?.calender && "bg-gray-900"
                   } text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium`}
-                  onClick={() =>
-                    setToggleNavDesign({
-                      dash: false,
-                      team: false,
-                      projects: false,
-                      calender: true,
-                    })
-                  }
+                  onClick={() => setPathName("/calender")}
                 >
                   Calendar
                 </Link>

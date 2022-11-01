@@ -53,7 +53,7 @@ const Team = () => {
       {list &&
         list.map((item, index) => (
           <div
-            style={{
+            style={{  
               backgroundColor: "lightblue",
               margin: "10px 30%",
               textAlign: "center",
@@ -71,14 +71,14 @@ const Team = () => {
         ))}
       <Draggable
         axis="both"
-        handle=".handle"
-        defaultPosition={{ x: 0, y: 0 }}
-        position={null}
-        grid={[25, 25]}
-        scale={1}
-        onStart={window.handleStart}
-        onDrag={window.handleDrag}
-        onStop={window.handleStop}
+        // handle=".handle"
+        // defaultPosition={{ x: 0, y: 0 }}
+        // position={null}
+        // grid={[25, 25]}
+        // scale={1}
+        // onStart={window.handleStart}
+        // onDrag={window.handleDrag}
+        // onStop={window.handleStop}
       >
         <div
           className="border-2 w-80 m-2 cursor-grab"
