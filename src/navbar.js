@@ -6,6 +6,12 @@ const Navbar = () => {
   const { setToggleMode, toggleMode } = useModeStore((state) => state);
   const [toggleNavLink, setToggleNavLink] = useState(false);
   const [toggleProfile, setToggleProfile] = useState(false);
+  const [toggleNavDesign, setToggleNavDesign] = useState({
+    dash: true,
+    team: false,
+    projects: false,
+    calender: false,
+  });
   return (
     <nav className="bg-gray-800">
       <div className="mx-auto max-w-7xl px-2 sm:px-16 lg:px-18">
@@ -68,26 +74,66 @@ const Navbar = () => {
               <div className="flex space-x-4">
                 <Link
                   to="/"
-                  className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
+                  className={`${
+                    toggleNavDesign?.dash && "bg-gray-900"
+                  } text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium`}
                   aria-current="page"
+                  onClick={() =>
+                    setToggleNavDesign({
+                      dash: true,
+                      team: false,
+                      projects: false,
+                      calender: false,
+                    })
+                  }
                 >
                   Dashboard
                 </Link>
                 <Link
                   to="/team"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  className={`${
+                    toggleNavDesign?.team && "bg-gray-900"
+                  } text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium`}
+                  onClick={() =>
+                    setToggleNavDesign({
+                      dash: false,
+                      team: true,
+                      projects: false,
+                      calender: false,
+                    })
+                  }
                 >
                   Team
                 </Link>
                 <Link
                   to="/projects"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  className={`${
+                    toggleNavDesign?.projects && "bg-gray-900"
+                  } text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium`}
+                  onClick={() =>
+                    setToggleNavDesign({
+                      dash: false,
+                      team: false,
+                      projects: true,
+                      calender: false,
+                    })
+                  }
                 >
                   Projects
                 </Link>
                 <Link
                   to="/calender"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  className={`${
+                    toggleNavDesign?.calender && "bg-gray-900"
+                  } text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium`}
+                  onClick={() =>
+                    setToggleNavDesign({
+                      dash: false,
+                      team: false,
+                      projects: false,
+                      calender: true,
+                    })
+                  }
                 >
                   Calendar
                 </Link>

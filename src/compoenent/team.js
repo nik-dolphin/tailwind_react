@@ -33,12 +33,10 @@ const Team = () => {
 
   const dragStart = (e, position) => {
     dragItem.current = position;
-    console.log(e.target.innerHTML);
   };
 
   const dragEnter = (e, position) => {
     dragOverItem.current = position;
-    console.log(e.target.innerHTML);
   };
 
   const drop = (e) => {
@@ -51,7 +49,26 @@ const Team = () => {
     setList(copyListItems);
   };
   return (
-    <div className={`${toggleMode ? " bg-black" : "bg-white"}`}>
+    <div className={`${toggleMode ? " bg-black text-white" : "bg-white"} p-3`}>
+      {list &&
+        list.map((item, index) => (
+          <div
+            style={{
+              backgroundColor: "lightblue",
+              margin: "10px 30%",
+              textAlign: "center",
+              fontSize: "20px",
+              color: "black",
+            }}
+            onDragStart={(e) => dragStart(e, index)}
+            onDragEnter={(e) => dragEnter(e, index)}
+            onDragEnd={drop}
+            key={index}
+            draggable
+          >
+            {item}
+          </div>
+        ))}
       <Draggable
         axis="both"
         handle=".handle"
@@ -71,24 +88,6 @@ const Team = () => {
           <div>This readme is really dragging on...</div>
         </div>
       </Draggable>
-      {list &&
-        list.map((item, index) => (
-          <div
-            style={{
-              backgroundColor: "lightblue",
-              margin: "10px 30%",
-              textAlign: "center",
-              fontSize: "20px",
-            }}
-            onDragStart={(e) => dragStart(e, index)}
-            onDragEnter={(e) => dragEnter(e, index)}
-            onDragEnd={drop}
-            key={index}
-            draggable
-          >
-            {item}
-          </div>
-        ))}
       <div className="flex flex-center justify-center">
         <div className="w-full max-w-md px-2 py-16 sm:px-0">
           <Tab.Group>
@@ -132,7 +131,7 @@ const Team = () => {
                         key={post.id}
                         className="relative rounded-md p-3 hover:bg-gray-100"
                       >
-                        <h3 className="text-sm font-medium leading-5">
+                        <h3 className="text-sm font-medium leading-5 text-black">
                           {post.title}
                         </h3>
                         <ul className="mt-1 flex space-x-1 text-xs font-normal leading-4 text-gray-500">

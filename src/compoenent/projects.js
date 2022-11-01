@@ -51,13 +51,15 @@ const Projects = () => {
     <div
       className={`${
         !toggleMode ? "bg-white" : "bg-black text-white"
-      } xl:h-[93.5vh]`}
+      }`}
     >
       <div className="flex items-center justify-center p-12">
         <section>
           <div
             {...getRootProps({ className: "dropzone" })}
-            className="border-2 border-black border-dashed w-full"
+            className={`${
+              toggleMode ? "border-white" : "border-black"
+            } border-2  border-dashed w-full`}
           >
             <input {...getInputProps()} />
             <p className="p-3">
@@ -67,8 +69,8 @@ const Projects = () => {
           <aside>{thumbs}</aside>
         </section>
       </div>
-      <h1 className="text-center pt-14 text-3xl">All Projects</h1>
-      <div className="flex items-center justify-center">
+      <h1 className="text-center pt-10 text-3xl pb-12">All Projects</h1>
+      <div className="flex items-center justify-center pb-12">
         <div className="grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 w-90% md:w-4/5">
           {ProjectsList.map((items, index) => {
             return (
