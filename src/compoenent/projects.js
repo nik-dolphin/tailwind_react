@@ -1,20 +1,35 @@
 import React from "react";
+import Draggable from "react-draggable";
 import { useModeStore } from "../store/mode/store";
 import { ProjectsList } from "../utility/utils";
 
 const ProjectComponent = ({ items }) => {
   return (
-    <a
-      href={items?.url}
-      target="_blank"
-      className="group h-[86%] block m-3 rounded-lg p-6 bg-gradient-to-r from-cyan-500 to-blue-500 ring-1 ring-slate-900/5 shadow-lg space-y-3 hover:bg-sky-500 hover:ring-sky-500"
-      rel="noreferrer"
+    <Draggable
+      axis="both"
+      handle=".handle"
+      // defaultPosition={{ x: 0, y: 0 }}
+      position={null}
+      grid={[25, 25]}
+      scale={1}
+      onStart={window.handleStart}
+      onDrag={window.handleDrag}
+      onStop={window.handleStop}
     >
-      <div className=" space-x-3">
-        <h1 className="text-slate-900 text-lg font-semibold">{items?.title}</h1>
-      </div>
-      <p className="text-slate-900 text-sm">{items?.description}</p>
-    </a>
+      <a
+        href={items?.url}
+        target="_blank"
+        className="group h-[86%] block m-3 rounded-lg p-6 bg-gradient-to-r from-cyan-500 to-blue-500 ring-1 ring-slate-900/5 shadow-lg space-y-3 hover:bg-sky-500 hover:ring-sky-500"
+        rel="noreferrer"
+      >
+        <div className=" space-x-3">
+          <h1 className="text-slate-900 text-lg font-semibold">
+            {items?.title}
+          </h1>
+        </div>
+        <p className="text-slate-900 text-sm">{items?.description}</p>
+      </a>
+    </Draggable>
   );
 };
 

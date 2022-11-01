@@ -19,7 +19,7 @@ const Calender = () => {
     <div
       className={`${
         !toggleMode ? "bg-white text-black" : "bg-black "
-      } h-[93.5vh]`}
+      }`}
     >
       <div className="flex items-center justify-center pt-10">
         <Calendar

@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/anchor-has-content */
 import { RadioGroup, Tab } from "@headlessui/react";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
+import Draggable from "react-draggable";
 import { useModeStore } from "../store/mode/store";
 import { classNames } from "../utility/functions";
 import { Recent, Popular, Trending, plans, allTeam } from "../utility/utils";
@@ -25,8 +26,68 @@ const Team = () => {
   const toggleMode = useModeStore((state) => state.toggleMode);
   // let  = useState(allTeam);
   const [selected, setSelected] = useState(plans[0]);
+
+  const dragItem = useRef();
+  const dragOverItem = useRef();
+  const [list, setList] = useState(["Item 1", "Item 2", "Item 3"]);
+
+  const dragStart = (e, position) => {
+    dragItem.current = position;
+    console.log(e.target.innerHTML);
+  };
+
+  const dragEnter = (e, position) => {
+    dragOverItem.current = position;
+    console.log(e.target.innerHTML);
+  };
+
+  const drop = (e) => {
+    const copyListItems = [...list];
+    const dragItemContent = copyListItems[dragItem.current];
+    copyListItems.splice(dragItem.current, 1);
+    copyListItems.splice(dragOverItem.current, 0, dragItemContent);
+    dragItem.current = null;
+    dragOverItem.current = null;
+    setList(copyListItems);
+  };
   return (
-    <div className={`${toggleMode ? " bg-black" : "bg-white"} h-[93.5vh]`}>
+    <div
+      className={`${toggleMode ? " bg-black" : "bg-white"}`}
+    >
+      <Draggable
+        axis="both"
+        handle=".handle"
+        defaultPosition={{ x: 0, y: 0 }}
+        position={null}
+        grid={[25, 25]}
+        scale={1}
+        onStart={window.handleStart}
+        onDrag={window.handleDrag}
+        onStop={window.handleStop}
+      >
+        <div className={"border-2 w-80 m-2 cursor-grab"}>
+          <div className="handle">Drag from here</div>
+          <div>This readme is really dragging on...</div>
+        </div>
+      </Draggable>
+      {list &&
+        list.map((item, index) => (
+          <div
+            style={{
+              backgroundColor: "lightblue",
+              margin: "10px 30%",
+              textAlign: "center",
+              fontSize: "20px",
+            }}
+            onDragStart={(e) => dragStart(e, index)}
+            onDragEnter={(e) => dragEnter(e, index)}
+            onDragEnd={drop}
+            key={index}
+            draggable
+          >
+            {item}
+          </div>
+        ))}
       <div className="flex flex-center justify-center">
         <div className="w-full max-w-md px-2 py-16 sm:px-0">
           <Tab.Group>
