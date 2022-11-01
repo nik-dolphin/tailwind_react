@@ -5,7 +5,7 @@ import React, { useRef, useState } from "react";
 import Draggable from "react-draggable";
 import { useModeStore } from "../store/mode/store";
 import { classNames } from "../utility/functions";
-import { Recent, Popular, Trending, plans, allTeam } from "../utility/utils";
+import { plans, allTeam } from "../utility/utils";
 
 const CheckIcon = (props) => {
   return (
@@ -51,9 +51,7 @@ const Team = () => {
     setList(copyListItems);
   };
   return (
-    <div
-      className={`${toggleMode ? " bg-black" : "bg-white"}`}
-    >
+    <div className={`${toggleMode ? " bg-black" : "bg-white"}`}>
       <Draggable
         axis="both"
         handle=".handle"
@@ -65,7 +63,10 @@ const Team = () => {
         onDrag={window.handleDrag}
         onStop={window.handleStop}
       >
-        <div className={"border-2 w-80 m-2 cursor-grab"}>
+        <div
+          className="border-2 w-80 m-2 cursor-grab"
+          ref={(dragItem, dragOverItem)}
+        >
           <div className="handle">Drag from here</div>
           <div>This readme is really dragging on...</div>
         </div>

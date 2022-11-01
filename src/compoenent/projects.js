@@ -1,46 +1,72 @@
-import React from "react";
-import Draggable from "react-draggable";
+import React, { useEffect, useState } from "react";
 import { useModeStore } from "../store/mode/store";
 import { ProjectsList } from "../utility/utils";
+import { useDropzone } from "react-dropzone";
 
 const ProjectComponent = ({ items }) => {
   return (
-    <Draggable
-      axis="both"
-      handle=".handle"
-      // defaultPosition={{ x: 0, y: 0 }}
-      position={null}
-      grid={[25, 25]}
-      scale={1}
-      onStart={window.handleStart}
-      onDrag={window.handleDrag}
-      onStop={window.handleStop}
+    <a
+      href={items?.url}
+      target="_blank"
+      className="group h-[86%] block m-3 rounded-lg p-6 bg-gradient-to-r from-cyan-500 to-blue-500 ring-1 ring-slate-900/5 shadow-lg space-y-3 hover:bg-sky-500 hover:ring-sky-500"
+      rel="noreferrer"
     >
-      <a
-        href={items?.url}
-        target="_blank"
-        className="group h-[86%] block m-3 rounded-lg p-6 bg-gradient-to-r from-cyan-500 to-blue-500 ring-1 ring-slate-900/5 shadow-lg space-y-3 hover:bg-sky-500 hover:ring-sky-500"
-        rel="noreferrer"
-      >
-        <div className=" space-x-3">
-          <h1 className="text-slate-900 text-lg font-semibold">
-            {items?.title}
-          </h1>
-        </div>
-        <p className="text-slate-900 text-sm">{items?.description}</p>
-      </a>
-    </Draggable>
+      <div className=" space-x-3">
+        <h1 className="text-slate-900 text-lg font-semibold">{items?.title}</h1>
+      </div>
+      <p className="text-slate-900 text-sm">{items?.description}</p>
+    </a>
   );
 };
 
 const Projects = () => {
   const toggleMode = useModeStore((state) => state.toggleMode);
+  const [files, setFiles] = useState([]);
+  const { getRootProps, getInputProps } = useDropzone({
+    onDrop: (acceptedFiles) => {
+      setFiles(
+        acceptedFiles.map((file) =>
+          Object.assign(file, {
+            preview: URL.createObjectURL(file),
+          })
+        )
+      );
+    },
+  });
+
+  const thumbs = files.map((file) => (
+    <div key={file.name}>
+      <div>
+        <img src={file.preview} alt={file.name} />
+      </div>
+    </div>
+  ));
+
+  useEffect(() => {
+    // Make sure to revoke the data uris to avoid memory leaks
+    files.forEach((file) => URL.revokeObjectURL(file.preview));
+  }, [files]);
+
   return (
     <div
       className={`${
         !toggleMode ? "bg-white" : "bg-black text-white"
       } xl:h-[93.5vh]`}
     >
+      <div className="flex items-center justify-center p-12">
+        <section>
+          <div
+            {...getRootProps({ className: "dropzone" })}
+            className="border-2 border-black border-dashed w-full"
+          >
+            <input {...getInputProps()} />
+            <p className="p-3">
+              Drag 'n' drop some files here, or click to select files
+            </p>
+          </div>
+          <aside>{thumbs}</aside>
+        </section>
+      </div>
       <h1 className="text-center pt-14 text-3xl">All Projects</h1>
       <div className="flex items-center justify-center">
         <div className="grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 w-90% md:w-4/5">
