@@ -15,7 +15,6 @@ const Navbar = () => {
   const [pathName, setPathName] = useState("");
   useEffect(() => {
     const url = window.location.pathname;
-    console.log(pathName);
     if (url === "/" || pathName === "/") {
       setToggleNavDesign({
         dash: true,
@@ -303,26 +302,38 @@ const Navbar = () => {
           <div className="space-y-1 px-2 pt-2 pb-3">
             <Link
               to="/"
-              className="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
+              className={`${
+                toggleNavDesign?.dash && "bg-gray-900"
+              } text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium`}
               aria-current="page"
+              onClick={() => setPathName("/")}
             >
               Dashboard
             </Link>
             <Link
               to="/team"
-              className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+              className={`${
+                toggleNavDesign?.team && "bg-gray-900"
+              } text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium`}
+              onClick={() => setPathName("/team")}
             >
               Team
             </Link>
             <Link
               to="/projects"
-              className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+              className={`${
+                toggleNavDesign?.projects && "bg-gray-900"
+              } text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium`}
+              onClick={() => setPathName("/projects")}
             >
               Projects
             </Link>
             <Link
               to="/calender"
-              className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+              className={`${
+                toggleNavDesign?.calender && "bg-gray-900"
+              } text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium`}
+              onClick={() => setPathName("/calender")}
             >
               Calendar
             </Link>

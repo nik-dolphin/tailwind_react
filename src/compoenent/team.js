@@ -26,7 +26,7 @@ const Team = () => {
   const toggleMode = useModeStore((state) => state.toggleMode);
   // let  = useState(allTeam);
   const [selected, setSelected] = useState(plans[0]);
-
+  const nodeRef = useRef(null);
   const dragItem = useRef();
   const dragOverItem = useRef();
   const [list, setList] = useState(["Item 1", "Item 2", "Item 3"]);
@@ -53,7 +53,7 @@ const Team = () => {
       {list &&
         list.map((item, index) => (
           <div
-            style={{  
+            style={{
               backgroundColor: "lightblue",
               margin: "10px 30%",
               textAlign: "center",
@@ -69,21 +69,8 @@ const Team = () => {
             {item}
           </div>
         ))}
-      <Draggable
-        axis="both"
-        // handle=".handle"
-        // defaultPosition={{ x: 0, y: 0 }}
-        // position={null}
-        // grid={[25, 25]}
-        // scale={1}
-        // onStart={window.handleStart}
-        // onDrag={window.handleDrag}
-        // onStop={window.handleStop}
-      >
-        <div
-          className="border-2 w-80 m-2 cursor-grab"
-          ref={(dragItem, dragOverItem)}
-        >
+      <Draggable nodeRef={nodeRef}>
+        <div ref={nodeRef} className="border-2 w-80 m-2 cursor-grab">
           <div className="handle">Drag from here</div>
           <div>This readme is really dragging on...</div>
         </div>
