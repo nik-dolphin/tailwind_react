@@ -22,9 +22,9 @@ const ProjectComponent = ({ items }) => {
 const Projects = () => {
   const toggleMode = useModeStore((state) => state.toggleMode);
 
-  // const onFileChange = (files) => {
-  //   console.log(files);
-  // };
+  const onFileChange = (files) => {
+    console.log(files);
+  };
 
   return (
     <div className={`${!toggleMode ? "bg-white" : "bg-black text-white"}`}>
@@ -32,7 +32,7 @@ const Projects = () => {
         <h2 className="mb-[30px] text-center text-black">
           Drag and Drop Here OR Click to upload files
         </h2>
-        <DropFileInput />
+        <DropFileInput onFileChange={(files) => onFileChange(files)} />
       </div>
       <h1 className="text-center pt-10 text-3xl pb-12">All Projects</h1>
       <div className="flex items-center justify-center pb-12">

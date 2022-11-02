@@ -9,6 +9,7 @@ module.exports = {
         97: "21rem",
       },
     },
+    visibility: ["group-hover"],
   },
   plugins: [
     plugin(({ addBase, theme }) => {
@@ -27,7 +28,8 @@ module.exports = {
         ".scrollbar::-webkit-scrollbar-thumb": {
           backgroundColor: "#666565",
           borderRadius: "16px",
-          boxShadow: "inset 2px 2px 2px hsl(0deg 0% 100% / 25%), inset -2px -2px 2px rgb(0 0 0 / 25%)"
+          boxShadow:
+            "inset 2px 2px 2px hsl(0deg 0% 100% / 25%), inset -2px -2px 2px rgb(0 0 0 / 25%)",
         },
         ".scrollbar::-webkit-scrollbar-track": {
           background: "linear-gradient(90deg,#434343,#434343 1px,#111 0,#111)",
