@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import PropTypes from "prop-types";
+import { ImageConfig } from "../config/imageConfig";
 
 const DropFileInput = (props) => {
   const wrapperRef = useRef(null);
@@ -73,7 +74,7 @@ const DropFileInput = (props) => {
               key={index}
               className="relative flex mb-[10px] bg-slate-200 p-4 rounded-[20px] group"
             >
-              {/* <img className="w-[50px] mr-[20px]" src={ImageConfig[item.type.split('/')[1]] || ImageConfig['default']} alt="" /> */}
+              <img className="w-[50px] mr-[20px]" src={ImageConfig[item.type.split('/')[1]] || ImageConfig['default']} alt="" />
               <div className="flex flex-col justify-between">
                 <p className="font-medium text-black">{item.name}</p>
                 <p className="font-medium text-black">{item.size}B</p>
