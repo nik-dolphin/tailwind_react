@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useModeStore } from "../store/mode/store";
 import { ProjectsList } from "../utility/utils";
-import { useDropzone } from "react-dropzone";
+import DropFileInput from "./dragdrop/dropFileInput";
 
 const ProjectComponent = ({ items }) => {
   return (
@@ -21,53 +21,16 @@ const ProjectComponent = ({ items }) => {
 
 const Projects = () => {
   const toggleMode = useModeStore((state) => state.toggleMode);
-  const [files, setFiles] = useState([]);
-  const { getRootProps, getInputProps } = useDropzone({
-    onDrop: (acceptedFiles) => {
-      setFiles(
-        acceptedFiles.map((file) =>
-          Object.assign(file, {
-            preview: URL.createObjectURL(file),
-          })
-        )
-      );
-    },
-  });
 
-  const thumbs = files.map((file) => (
-    <div key={file.name}>
-      <div>
-        <img src={file.preview} alt={file.name} />
-      </div>
-    </div>
-  ));
-
-  useEffect(() => {
-    // Make sure to revoke the data uris to avoid memory leaks
-    files.forEach((file) => URL.revokeObjectURL(file.preview));
-  }, [files]);
+  // const onFileChange = (files) => {
+  //   console.log(files);
+  // };
 
   return (
-    <div
-      className={`${
-        !toggleMode ? "bg-white" : "bg-black text-white"
-      }`}
-    >
-      <div className="flex items-center justify-center p-12">
-        <section>
-          <div
-            {...getRootProps({ className: "dropzone" })}
-            className={`${
-              toggleMode ? "border-white" : "border-black"
-            } border-2  border-dashed w-full`}
-          >
-            <input {...getInputProps()} />
-            <p className="p-3">
-              Drag 'n' drop some files here, or click to select files
-            </p>
-          </div>
-          <aside>{thumbs}</aside>
-        </section>
+    <div className={`${!toggleMode ? "bg-white" : "bg-black text-white"}`}>
+      <div className="bg-white p-[30px] rounded-[20px] shadow-[rgba(149,157,165,0.2)_0px_8px_24px]">
+        <h2 className="mb-[30px] text-center">Drag and Drop Here OR Click to upload files</h2>
+        <DropFileInput />
       </div>
       <h1 className="text-center pt-10 text-3xl pb-12">All Projects</h1>
       <div className="flex items-center justify-center pb-12">
