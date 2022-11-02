@@ -66,7 +66,7 @@ const DropFileInput = (props) => {
       </div>
       {fileList.length > 0 ? (
         <div className="mt-7">
-          <p className="mb-[20px] font-medium text-center text-black">
+          <p className="mb-[20px] font-medium text-center">
             Ready to upload
           </p>
           {fileList.map((item, index) => (
@@ -80,7 +80,7 @@ const DropFileInput = (props) => {
                 <p className="font-medium text-black">{item.size}B</p>
               </div>
               <span
-                className="bg-slate-300 w-10 h-10 rounded-full flex items-center justify-center absolute right-[10px] top-1/2 translate-y-[-50%] shadow-[rgba(149,157,165,0.2)_0px_8px_24px] cursor-pointer transition-opacity duration-[0.3s] ease-in-out opacity-0 group-hover:opacity-100"
+                className="bg-slate-300 w-10 h-10 text-black rounded-full flex items-center justify-center absolute right-[10px] top-1/2 translate-y-[-50%] shadow-[rgba(149,157,165,0.2)_0px_8px_24px] cursor-pointer transition-opacity duration-[0.3s] ease-in-out opacity-0 group-hover:opacity-100"
                 onClick={() => fileRemove(item)}
               >
                 x

@@ -28,8 +28,8 @@ const Projects = () => {
 
   return (
     <div className={`${!toggleMode ? "bg-white" : "bg-black text-white"}`}>
-      <div className="bg-white p-[30px] rounded-[20px] shadow-[rgba(149,157,165,0.2)_0px_8px_24px]">
-        <h2 className="mb-[30px] text-center text-black">
+      <div className={`${!toggleMode ? "bg-white" : "bg-black text-white"} p-[30px] rounded-[20px] shadow-[rgba(149,157,165,0.2)_0px_8px_24px]`}>
+        <h2 className="mb-[30px] text-center">
           Drag and Drop Here OR Click to upload files
         </h2>
         <DropFileInput onFileChange={(files) => onFileChange(files)} />
