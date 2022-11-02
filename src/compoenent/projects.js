@@ -29,7 +29,9 @@ const Projects = () => {
   return (
     <div className={`${!toggleMode ? "bg-white" : "bg-black text-white"}`}>
       <div className="bg-white p-[30px] rounded-[20px] shadow-[rgba(149,157,165,0.2)_0px_8px_24px]">
-        <h2 className="mb-[30px] text-center">Drag and Drop Here OR Click to upload files</h2>
+        <h2 className="mb-[30px] text-center text-black">
+          Drag and Drop Here OR Click to upload files
+        </h2>
         <DropFileInput />
       </div>
       <h1 className="text-center pt-10 text-3xl pb-12">All Projects</h1>
