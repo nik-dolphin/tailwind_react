@@ -4,6 +4,7 @@ import { RadioGroup, Tab } from "@headlessui/react";
 import React, { useRef, useState } from "react";
 import Draggable from "react-draggable";
 import { useModeStore } from "../store/mode/store";
+import DropdownLink from "../utility/DropdownLink";
 import { classNames } from "../utility/functions";
 import { plans, allTeam } from "../utility/utils";
 
@@ -50,6 +51,9 @@ const Team = () => {
   };
   return (
     <div className={`${toggleMode ? " bg-black text-white" : "bg-white"} p-3`}>
+      <button>
+        <DropdownLink />
+      </button>
       {list &&
         list.map((item, index) => (
           <div
@@ -69,12 +73,14 @@ const Team = () => {
             {item}
           </div>
         ))}
-      <Draggable nodeRef={nodeRef}>
-        <div ref={nodeRef} className="border-2 w-80 m-2 cursor-grab">
-          <div className="handle">Drag from here</div>
-          <div>This readme is really dragging on...</div>
-        </div>
-      </Draggable>
+      <div className="w-[80vw]">
+        <Draggable nodeRef={nodeRef}>
+          <div ref={nodeRef} className="border-2 w-80 m-2 cursor-grab">
+            <div className="handle">Drag from here</div>
+            <div>This readme is really dragging on...</div>
+          </div>
+        </Draggable>
+      </div>
       <div className="flex flex-center justify-center">
         <div className="w-full max-w-md px-2 py-16 sm:px-0">
           <Tab.Group>
